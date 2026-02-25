@@ -1,0 +1,13 @@
+{
+    "validUser": {
+        "username": "S_admin",
+        "password": "admin@123",
+        "storeCode": "SUB1"
+    },
+
+    "invalidUser": {
+        "username": "S_admi",
+        "password": "admin",
+        "storeCode": "SNVC"
+    }
+}

@@ -84,3 +84,10 @@ Cypress.Commands.add('selectRandomOptionTable', (selector, options = {}) => {
                 .should('have.value', value)
         })
 })
+
+Cypress.Commands.add('selectRandom', (selector) => {
+    cy.get(selector).then(($els) => {
+        const randomIndex = Cypress._.random(0, $els.length - 1)
+        cy.wrap($els.eq(randomIndex)).click()
+    }) 
+})

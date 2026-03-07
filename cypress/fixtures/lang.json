@@ -1,0 +1,18 @@
+{
+  "CustomerDetails": [
+    "Customer Details",
+    "ग्राहक विवरण",
+    "Détails du client",
+    "تفاصيل العميل"
+  ],
+  "OrderDetails": {
+    "en": "Order Details",
+    "hi": "ऑर्डर विवरण"
+  },
+  "CustomerName": [
+    "Rishu",
+    "ريشو سينغ",
+    "रिशु सिंह",
+    "Chloé"
+  ]
+}

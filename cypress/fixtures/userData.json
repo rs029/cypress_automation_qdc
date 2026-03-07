@@ -9,5 +9,10 @@
         "username": "S_admi",
         "password": "admin",
         "storeCode": "SNVC"
+    },
+    "GCCUser": {
+        "username": "triloke",
+        "password": "admin@123",
+        "storeCode": "ML2"
     }
 }

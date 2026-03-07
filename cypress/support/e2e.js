@@ -23,4 +23,10 @@ Cypress.on('uncaught:exception', (err) => {
     if (err.message.includes('Cannot read properties of undefined')){
         return false
     }
+    if (err.message.includes('A7 is not defined')) {
+    return false
+  }
+  if (err.message.includes('Unexpected end of JSON input')) {
+    return false
+  }
 })

@@ -91,3 +91,15 @@ Cypress.Commands.add('selectRandom', (selector) => {
         cy.wrap($els.eq(randomIndex)).click()
     }) 
 })
+
+Cypress.Commands.add('getLatestValue', () => {
+    return cy.get('#grdEntry tbody tr:has(td)')
+        .should('have.length.greaterThan', 0)
+        .first()
+        .find('td')
+        .eq(2)
+        .invoke('text')
+        .then((text) => {
+            return text.trim()
+        })
+})

@@ -10,8 +10,16 @@ class BookingPage {
         })
     }
 
+    setRate(rate) {
+        cy.get('#txtAdvance').clear().type(rate)
+    }
+
     createOrder() {
         cy.get('#btnCreateOrder').click()
+    }
+
+    saveAsBalance() {
+        cy.get('#btnOkAdvance').click()
     }
 
     createOrderPerWeight() {

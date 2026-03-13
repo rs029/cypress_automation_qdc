@@ -7,14 +7,10 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
-    baseUrl: 'https://gir3.quickdrycleaning.com',
+    baseUrl: 'https://gir3.quickdrycleaning.com/',
     env: {
-      validUser: "S_admin",
-      validPass: "admin@123",
-      validSCode: "SUB1",
-      invalidUser: "S_admi",
-      invalidPass: "admin",
-      invalidSCode: "SNVC"
+      stagingUrl: 'https://cleankart.quickdrycleaning.com/',
+      productionUrl: 'https://subs.quickdrycleaning.com/'
     }
   },
 });

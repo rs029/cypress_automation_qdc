@@ -10,9 +10,16 @@
         "password": "admin",
         "storeCode": "SNVC"
     },
+
     "GCCUser": {
         "username": "triloke",
         "password": "admin@123",
         "storeCode": "ML2"
+    },
+
+    "productionUser": {
+        "username": "rishupro",
+        "password": "admin@123",
+        "storeCode": "CST1"
     }
 }

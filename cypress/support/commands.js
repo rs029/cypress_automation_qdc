@@ -43,7 +43,7 @@ Cypress.Commands.add('selectRandomOptionTable', (selector, options = {}) => {
         alias = 'selectedOption'
     } = options
 
-    // wait unti dropdown is visible
+    // wait until dropdown is visible
     cy.get(selector)
         .should('be.visible')
         .and('not.be.disabled')
@@ -102,4 +102,31 @@ Cypress.Commands.add('getLatestValue', () => {
         .then((text) => {
             return text.trim()
         })
+})
+
+Cypress.Commands.add('getBookingNumber', () => {
+    return cy.url().then((url) => {
+        const bnValue = new URL(url).searchParams.get('BN')
+        const bookingNo = bnValue.split('-')[0]
+        cy.wrap(bookingNo).as('bookingNumber')
+    })
+})
+
+Cypress.Commands.add('selectMenu', (menu, option) => {
+    // Open Main Menu
+    cy.contains('a.dropdown-toggle', menu)
+            .should('be.visible')
+                .click()
+
+    // Open Sub-Menu
+    cy.get('.dropdown-menu')
+        .contains('li a', option)
+            .should('be.visible')
+                .click()
+})
+
+Cypress.Commands.add('clickWithoutNewTab', (selector) => {
+    cy.get(selector)
+        .invoke('removeAttr', 'target')
+            .click()
 })

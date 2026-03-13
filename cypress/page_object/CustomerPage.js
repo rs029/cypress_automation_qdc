@@ -6,7 +6,9 @@ class CustomerPage {
     searchCustomer(name) {
         cy.get('#drpDefaultCustomerSearch').select('Name')
         cy.get('#txtCustomer').type(name)
-        cy.get('.tt-dropdown-menu').first().click()
+        cy.get('.tt-dropdown-menu')
+                .should('be.visible')
+        cy.get('.tt-suggestion').first().click()
     }
 
     verifyCustomerDetails() {

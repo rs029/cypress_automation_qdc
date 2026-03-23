@@ -3,6 +3,7 @@ import LoginPage from "../page_object/loginPage"
 import GarmentSelectionPage from "../page_object/GarmentSelectionPage"
 import BookingPage from "../page_object/BookingPage"
 import CommonSelector from "../page_object/CommonSelector"
+import CustomerAdvance from "../page_object/CustomerAdvance"
 const userData = require('../fixtures/userData.json')
 
 describe('Advance Scenarios', () => {
@@ -31,6 +32,8 @@ describe('Advance Scenarios', () => {
         GarmentSelectionPage.closePage()
 
         // On booking Screen
+        BookingPage.uncheckReceiptTagIfChecked()
+        cy.get('#chkPrintReceipt').parent().invoke('prop','tagName')
         BookingPage.uncheckPrintTagIfChecked()
         BookingPage.setRate('500')
         BookingPage.createOrder()
@@ -46,12 +49,12 @@ describe('Advance Scenarios', () => {
         cy.clickWithoutNewTab('#ctl00_ContentPlaceHolder1_grdReport_ctl02_hypCashBookDetails')
 
         // Verify the data on the page
-        cy.get('@bookingNumber').then((fetchBK) => {
-            CommonSelector.match(fetchBK)
+        cy.get('@bookingNumber').then((bookingNo) => {
+            CustomerAdvance.advanceReceived(bookingNo)
         })
     })
 
-    it('Amount Paid > Order Amount', () => {
+    it('CN applied on Booking', () => {
 
         CustomerPage.closeModal()
         CustomerPage.searchCustomer('Rishu')
@@ -66,10 +69,10 @@ describe('Advance Scenarios', () => {
         GarmentSelectionPage.closePage()
 
         // On booking Screen
+        BookingPage.uncheckReceiptTagIfChecked()
+        cy.get('#chkPrintReceipt').parent().invoke('prop','tagName')
         BookingPage.uncheckPrintTagIfChecked()
-        BookingPage.setRate('500')
         BookingPage.createOrder()
-        BookingPage.saveAsBalance()
         BookingPage.verifyBookingSlip()
         cy.getBookingNumber()
 
@@ -81,8 +84,8 @@ describe('Advance Scenarios', () => {
         cy.clickWithoutNewTab('#ctl00_ContentPlaceHolder1_grdReport_ctl02_hypCashBookDetails')
 
         // Verify the data on the page
-        cy.get('@bookingNumber').then((fetchBK) => {
-            CommonSelector.match(fetchBK)
+        cy.get('@bookingNumber').then((bookingNo) => {
+            CustomerAdvance.advanceUsed(bookingNo)
         })
     })
 })

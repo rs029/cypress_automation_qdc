@@ -8,19 +8,19 @@ const userData = require('../fixtures/userData.json')
 
 describe('Advance Scenarios', () => {
     beforeEach(() => {
-        cy.visit(Cypress.env('stagingUrl'))
-        CustomerPage.closeModal()
+        cy.visit(Cypress.env('productionUrl'))
+        // CustomerPage.closeModal()
         LoginPage.login(
-            userData.validUser.username,
-            userData.validUser.password,
-            userData.validUser.storeCode
+            userData.productionUser.username,
+            userData.productionUser.password,
+            userData.productionUser.storeCode
         )
     })
 
     it('Amount Paid > Order Amount', () => {
 
-        CustomerPage.closeModal()
-        CustomerPage.searchCustomer('Rishu')
+        // CustomerPage.closeModal()
+        CustomerPage.searchCustomer('customer sharing')
         CustomerPage.verifyCustomerDetails()
         CustomerPage.clickPerPieceOrder()
 
@@ -44,7 +44,7 @@ describe('Advance Scenarios', () => {
 
         // Navigate to Customer Advance & search customer
         cy.selectMenu('Customer', 'Customer Advances')
-        cy.get('#txtCustName').type('Rishu')
+        cy.get('#txtCustName').type('customer sharing')
         CommonSelector.dropdownSelection()
         cy.clickWithoutNewTab('#ctl00_ContentPlaceHolder1_grdReport_ctl02_hypCashBookDetails')
 
@@ -56,8 +56,8 @@ describe('Advance Scenarios', () => {
 
     it('CN applied on Booking', () => {
 
-        CustomerPage.closeModal()
-        CustomerPage.searchCustomer('Rishu')
+        // CustomerPage.closeModal()
+        CustomerPage.searchCustomer('customer sharing')
         CustomerPage.verifyCustomerDetails()
         CustomerPage.clickPerPieceOrder()
 
@@ -79,7 +79,7 @@ describe('Advance Scenarios', () => {
 
         // Navigate to Customer Advance & search customer
         cy.selectMenu('Customer', 'Customer Advances')
-        cy.get('#txtCustName').type('Rishu')
+        cy.get('#txtCustName').type('customer sharing')
         CommonSelector.dropdownSelection()
         cy.clickWithoutNewTab('#ctl00_ContentPlaceHolder1_grdReport_ctl02_hypCashBookDetails')
 

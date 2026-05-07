@@ -10,7 +10,7 @@ module.exports = defineConfig({
     baseUrl: 'https://gir3.quickdrycleaning.com/',
     env: {
       stagingUrl: 'https://cleankart.quickdrycleaning.com/',
-      productionUrl: 'https://subs.quickdrycleaning.com/'
+      productionUrl: 'https://subs3.quickdrycleaning.com/'
     }
   },
 });

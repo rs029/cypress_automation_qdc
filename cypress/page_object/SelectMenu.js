@@ -34,7 +34,35 @@ class SelectMenu {
                         const processName = this.processMap[key]
                         cy.log('Matched = ' + processName)
 
-                        cy.get('#mnuProcess').click()
+                        cy.get('#mnuProcess')
+                            .should('be.visible')
+                            .click()
+                        cy.contains(processName).click()
+
+                        return false
+                    }
+                }
+            })
+    }
+
+    selectProcessMenuPerWeight() {
+        cy.contains('tr', orderNumber)
+            .find('td.verAline')
+            .each(($el) => {
+
+                const text = $el.text().trim()
+
+                if (!text) return
+
+                for (const key in this.processMap) {
+
+                    if (text.includes(key)) {
+                        const processName = this.processMap[key]
+                        cy.log('Matched = ' + processName)
+
+                        cy.get('#mnuProcess')
+                            .should('be.visible')
+                            .click()
                         cy.contains(processName).click()
 
                         return false

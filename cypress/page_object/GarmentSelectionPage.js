@@ -4,14 +4,14 @@ class GarmentSelectionPage {
     }
 
     selectRandomGarment() {
-        cy.clickRandom('.Service-binding')
-        cy.clickRandom('.Group-binding')
+        // cy.clickRandom('.Service-binding')
+        // cy.clickRandom('.Group-binding')
         cy.clickRandom('.Garment-Binding')
     }
 
     addGarmentWeightAndQuantity() {
-        cy.get('#txtWeight').clear().type('5')
-        cy.get('#txtQuantity').clear().type('15')
+        cy.get('#txtWeight').clear().type('1')
+        cy.get('#txtQuantity').clear().type('1')
     }
 
     setRate(rate) {

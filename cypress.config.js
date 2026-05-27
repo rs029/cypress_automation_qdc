@@ -7,7 +7,7 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
-    baseUrl: 'https://gir3.quickdrycleaning.com/',
+    baseUrl: 'https://cleankart.quickdrycleaning.com/',
     env: {
       stagingUrl: 'https://cleankart.quickdrycleaning.com/',
       productionUrl: 'https://subs3.quickdrycleaning.com/'

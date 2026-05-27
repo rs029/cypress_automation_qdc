@@ -1,29 +1,43 @@
 import LoginPage from '../page_object/loginPage'
 const userData = require('../fixtures/userData.json')
 
-const loginPage = new LoginPage()
+// const loginPage = new LoginPage()
 
 describe('Login Test', () => {
 
     beforeEach(() => {
+        // cy.clearCookies()
+        // cy.clearLocalStorage()
+        // cy.window().then((win) => {
+        //     win.sessionStorage.clear()
+        // })
         cy.visitURL()
     })
+
+    // afterEach(() => {
+    //     cy.clearAllCookies()
+    //     cy.clearAllLocalStorage()
+    // })
 
     it('Visits website & check Title', () => {
         cy.title().should('include', 'Quick Dry Cleaning Software - Login')
     })
 
     it('Logging In - Positive case - all fields are correct & filled', () => {
-        loginPage.login(
+        LoginPage.login(
             userData.validUser.username,
             userData.validUser.password,
             userData.validUser.storeCode
         )
         cy.title().should('include', 'Quick Drycleaning Software')
+        // cy.url().should('not.include', '/Login')
+
+        // cy.get('body')
+        //     .should('be.visible')
     })
 
     it('Login - Negative Scenario, Wrong password', () => {
-        loginPage.login(
+        LoginPage.login(
             userData.validUser.username,
             userData.invalidUser.password,
             userData.validUser.storeCode
@@ -32,11 +46,11 @@ describe('Login Test', () => {
         // cy.get('#lblMsg')
         // .should('contain', 'incorrect')
         cy.contains('Your user name or password is incorrect')
-        .should('be.visible')
+            .should('be.visible')
     })
 
     it('Login - Negative Scenario, Wrong username', () => {
-        loginPage.login(
+        LoginPage.login(
             userData.invalidUser.username,
             userData.validUser.password,
             userData.validUser.storeCode
@@ -45,11 +59,11 @@ describe('Login Test', () => {
         // cy.get('#lblMsg')
         // .should('contain', 'incorrect')
         cy.contains('Your user name or password is incorrect')
-        .should('be.visible')
+            .should('be.visible')
     })
 
     it('Login - Negative Scenario, Wrong store code', () => {
-        loginPage.login(
+        LoginPage.login(
             userData.validUser.username,
             userData.validUser.password,
             userData.invalidUser.storeCode
@@ -60,12 +74,12 @@ describe('Login Test', () => {
         // cy.contains('Your user name or password is incorrect')
         // .should('be.visible')
         cy.get('#lblMsg')
-        .should('have.text', 'Please enter correct store code.')
+            .should('have.text', 'Please enter correct store code.')
     })
 
     it('Login -  Empty Fields', () => {
         cy.get('input[name="btnLogin"]').click()
-        
+
         cy.on('window:alert', (text) => {
             const expectedLines = [
                 'User Id is a required field',

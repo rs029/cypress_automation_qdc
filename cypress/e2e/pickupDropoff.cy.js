@@ -6,12 +6,11 @@ import Menu from "../page_object/Menu"
 import PickupSchedulerPage from "../page_object/PickupSchedulerPage"
 const userData = require('../fixtures/userData.json')
 
-const loginPage = new LoginPage()
-
 describe('Pickup & Dropoff scenarios', () => {
     beforeEach(() => {
-        cy.visitURL()
-        loginPage.login(
+        cy.visit(Cypress.env('gccUrl'))
+        cy.viewport(1920, 1080)
+        LoginPage.login(
             userData.GCCUser.username,
             userData.GCCUser.password,
             userData.GCCUser.storeCode
@@ -19,7 +18,7 @@ describe('Pickup & Dropoff scenarios', () => {
     })
 
     it('Create Pickup', () => {
-        CustomerPage.closeModal()
+        // CustomerPage.closeModal()
 
         // Select Home Pickup Schduler from Menu
         Menu.menuIcon()
@@ -36,7 +35,7 @@ describe('Pickup & Dropoff scenarios', () => {
     })
 
     it('Create DropOff from latest Pickup', () => {
-        CustomerPage.closeModal()
+        // CustomerPage.closeModal()
 
         // Select Home Pickup Schduler from Menu
         Menu.menuIcon()

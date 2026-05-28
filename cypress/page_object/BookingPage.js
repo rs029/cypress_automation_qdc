@@ -12,13 +12,13 @@ class BookingPage {
 
     uncheckReceiptTagIfChecked() {
         cy.get('#chkPrintReceipt')
-        .then($el => {
-            if ($el.is(':checked')) {
-                cy.wrap($el)
-                    .parent('label')
-                    .click()
-            }
-        })
+            .then($el => {
+                if ($el.is(':checked')) {
+                    cy.wrap($el)
+                        .parent('label')
+                        .click()
+                }
+            })
     }
 
     setRate(rate) {

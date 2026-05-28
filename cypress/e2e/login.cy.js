@@ -1,5 +1,5 @@
 import LoginPage from '../page_object/loginPage'
-const userData = require('../fixtures/userData.json')
+import userData from '../fixtures/userData.json'
 
 // const loginPage = new LoginPage()
 

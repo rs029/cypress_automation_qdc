@@ -8,19 +8,20 @@ const userData = require('../fixtures/userData.json')
 
 describe('Advance Scenarios', () => {
     beforeEach(() => {
-        cy.visit(Cypress.env('productionUrl'))
+        cy.visit(Cypress.env('stagingUrl'))
+        cy.viewport(1920, 1080)
         // CustomerPage.closeModal()
         LoginPage.login(
-            userData.productionUser.username,
-            userData.productionUser.password,
-            userData.productionUser.storeCode
+            userData.validUser.username,
+            userData.validUser.password,
+            userData.validUser.storeCode
         )
     })
 
     it('Amount Paid > Order Amount', () => {
 
         // CustomerPage.closeModal()
-        CustomerPage.searchCustomer('customer sharing')
+        CustomerPage.searchCustomer('Automation Testing')
         CustomerPage.verifyCustomerDetails()
         CustomerPage.clickPerPieceOrder()
 
@@ -43,8 +44,8 @@ describe('Advance Scenarios', () => {
 
 
         // Navigate to Customer Advance & search customer
-        cy.selectMenu('Customer', 'Customer Advances')
-        cy.get('#txtCustName').type('customer sharing')
+        cy.selectMenu('Customer', 'Advance Payment')
+        cy.get('#txtCustName').type('Automation Testing')
         CommonSelector.dropdownSelection()
         cy.clickWithoutNewTab('#ctl00_ContentPlaceHolder1_grdReport_ctl02_hypCashBookDetails')
 
@@ -57,7 +58,7 @@ describe('Advance Scenarios', () => {
     it('CN applied on Booking', () => {
 
         // CustomerPage.closeModal()
-        CustomerPage.searchCustomer('customer sharing')
+        CustomerPage.searchCustomer('Automation Testing')
         CustomerPage.verifyCustomerDetails()
         CustomerPage.clickPerPieceOrder()
 
@@ -78,8 +79,8 @@ describe('Advance Scenarios', () => {
 
 
         // Navigate to Customer Advance & search customer
-        cy.selectMenu('Customer', 'Customer Advances')
-        cy.get('#txtCustName').type('customer sharing')
+        cy.selectMenu('Customer', 'Advance Payment')
+        cy.get('#txtCustName').type('Automation Testing')
         CommonSelector.dropdownSelection()
         cy.clickWithoutNewTab('#ctl00_ContentPlaceHolder1_grdReport_ctl02_hypCashBookDetails')
 

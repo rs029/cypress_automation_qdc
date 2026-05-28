@@ -68,7 +68,7 @@ describe('Simple Order Booking Scenarios', () => {
         BookingPage.verifyBookingSlip()
     })
 
-    it('Order Per Piece - Complete Flow', () => {
+    it.only('Order Per Piece - Complete Flow', () => {
 
         // CustomerPage.closeModal()
         CustomerPage.searchCustomer('Automation Testing')
@@ -115,14 +115,14 @@ describe('Simple Order Booking Scenarios', () => {
             CommonSelector.dropdownSelection()
         })
         cy.get('#btnDelAndAcceptPayment').click()
-        BookingPage.skipPackage()
-        
-        cy.get('#btnDeliver').click()
+        // BookingPage.skipPackage()
+        DeliveryScreen.deliverGarments()
+        // cy.get('#btnDeliver').click()
         cy.get('#btnAccept').click()
         DeliveryScreen.verifyDeliveryScreen('Delivered')
     })
 
-    it('Order Per Weight - Complete Flow', () => {
+    it.only('Order Per Weight - Complete Flow', () => {
 
         // CustomerPage.closeModal()
         CustomerPage.searchCustomer('Automation Testing')

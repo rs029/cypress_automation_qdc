@@ -46,8 +46,8 @@ class SelectMenu {
     }
 
     selectProcessMenuPerWeight() {
-        cy.contains('tr', orderNumber)
-            .find('td.verAline')
+        // cy.contains('tr', orderNumber)
+            cy.get('td.verAline')
             .each(($el) => {
 
                 const text = $el.text().trim()

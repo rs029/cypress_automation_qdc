@@ -23,7 +23,7 @@ describe('Simple Order Booking Scenarios', () => {
         )
     })
 
-    it.only('Order Per Piece', () => {
+    it('Order Per Piece', () => {
 
         // CustomerPage.closeModal()
         CustomerPage.searchCustomer('Automation Testing')
@@ -46,7 +46,7 @@ describe('Simple Order Booking Scenarios', () => {
         BookingPage.verifyBookingSlip()
     })
 
-    it.only('Order Per Weight', () => {
+    it('Order Per Weight', () => {
 
         // CustomerPage.closeModal()
         CustomerPage.searchCustomer('Automation Testing')

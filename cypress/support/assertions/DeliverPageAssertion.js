@@ -1,6 +1,8 @@
-class DeliveryScreen {
+import DeliveryPageLocator from '../locators/DeliveryPageLocator'
+
+class DeliverPageAssertion {
     verifyDeliveryScreen(status) {
-        cy.get('#grdData')
+        cy.get(DeliveryPageLocator.gridData)
             .contains('td', status)
             .scrollIntoView()
             .parent('tr')
@@ -10,7 +12,7 @@ class DeliveryScreen {
     }
 
     verifyDeliveryScreenPerWeight(status) {
-        cy.get('#grdData')
+        cy.get(DeliveryPageLocator.gridData)
             .contains('td', status)
             .scrollIntoView()
             .parent('tr')
@@ -18,20 +20,6 @@ class DeliveryScreen {
             .eq(5)
             .should('contain', 'Delivered')
     }
-
-    deliverGarments() {
-        cy.get('body').then(($body) => {
-
-            if ($body.find('#btnPkgSkip').length > 0) {
-
-                cy.get('#btnPkgSkip').click()
-
-            }
-
-            cy.get('#btnDeliver').click()
-
-        })
-    }
 }
 
-export default new DeliveryScreen()
+export default new DeliverPageAssertion()

@@ -7,5 +7,9 @@
     "AdvanceUsed": [
         "100",
         "118"
-    ]
+    ],
+
+    "inputGarmentWeight": 1,
+    "inputGarmentQuantity": 1,
+    "setRate": 100
 }

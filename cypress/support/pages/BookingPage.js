@@ -25,7 +25,7 @@ class BookingPage extends BasePage {
     }
 
     setRate() {
-        this.type(BookingPageLocator.inputAdvance, '100')   
+        this.type(BookingPageLocator.inputAdvance, '500')   
     }
 
     createOrder() {
@@ -55,6 +55,17 @@ class BookingPage extends BasePage {
         this.createOrder()
         this.createOrderPerWeight()
         BookingPageAssertion.verifyBookingSlip()
+        cy.getBookingNumber()
+    }
+
+    createBookingPerPieceOrderAdvance() {
+        this.uncheckReceiptTagIfChecked()
+        cy.get('#chkPrintReceipt').parent().invoke('prop', 'tagName')
+        this.uncheckPrintTagIfChecked()
+        this.setRate()
+        this.createOrder()
+        this.saveAsBalance()
+        this.verifyBookingSlip()
         cy.getBookingNumber()
     }
 }

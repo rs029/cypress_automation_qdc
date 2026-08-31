@@ -23,6 +23,10 @@ class CustomerActionPage extends BasePage {
         })
         ProcessPage.markReady()
     }
+
+    getCustomerAdvance() {
+        MenuPage.dropdownMenu('Customer', 'Advance Payment')
+    }
 }
 
 export default new CustomerActionPage()

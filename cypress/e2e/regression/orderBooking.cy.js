@@ -15,6 +15,7 @@ import DeliverPageAssertion from '../../support/assertions/DeliverPageAssertion'
 import customer from "../../fixtures/customer.json"
 import lang from "../../fixtures/lang.json"
 import userData from '../../fixtures/userData.json'
+import  value  from "../../fixtures/value.json"
 
 describe('Simple Order Booking Scenarios', () => {
     beforeEach(() => {
@@ -39,7 +40,7 @@ describe('Simple Order Booking Scenarios', () => {
         // On Garment Selection Screen
         GarmentSelectionPageAssertion.verifyPage()
         GarmentSelectionPage.selectRandomGarment()
-        GarmentSelectionPage.setRate()
+        GarmentSelectionPage.setRate(value.setRate)
         GarmentSelectionPage.addItem()
         GarmentSelectionPage.closePage()
 
@@ -58,7 +59,8 @@ describe('Simple Order Booking Scenarios', () => {
 
         // On selecting weights
         GarmentSelectionPageAssertion.verifyPage()
-        GarmentSelectionPage.addGarmentWeightAndQuantity()
+        GarmentSelectionPage.addGarmentWeight(value.inputGarmentWeight)
+        GarmentSelectionPage.addGarmentQuantity(value.inputGarmentQuantity)
         GarmentSelectionPage.addItem()
 
         // On booking Screen
@@ -67,9 +69,9 @@ describe('Simple Order Booking Scenarios', () => {
         BookingPageAssertion.verifyBookingSlip()
     })
 
-    it('Order Per Piece - Complete Flow', () => {
+    it.only('Order Per Piece - Complete Flow', () => {
 
-        // CustomerPage.closeModal()
+        // Home Page - Search Customer and click on Per Piece Order
         HomePage.searchCustomer(customer.regularCustomer)
         CustomerLandingPageAssertion.verifyCustomerDetailsLabel()
         CustomerLandingPage.clickPerPieceOrder()
@@ -77,7 +79,7 @@ describe('Simple Order Booking Scenarios', () => {
         // On Garment Selection Screen
         GarmentSelectionPageAssertion.verifyPage()
         GarmentSelectionPage.selectRandomGarment()
-        GarmentSelectionPage.setRate()
+        GarmentSelectionPage.setRate(value.setRate)
         GarmentSelectionPage.addItem()
         GarmentSelectionPage.closePage()
 
@@ -86,7 +88,6 @@ describe('Simple Order Booking Scenarios', () => {
 
         // Now navigate to the Process & Mark Ready for Pickup
         CustomerActionPage.searchInvoice()
-
         CustomerActionPage.markReadyForPickup()
 
         // Pay & Deliver through Delivery Screen
@@ -97,16 +98,17 @@ describe('Simple Order Booking Scenarios', () => {
         DeliverPageAssertion.verifyDeliveryScreen('Delivered')
     })
 
-    it.only('Order Per Weight - Complete Flow', () => {
+    it('Order Per Weight - Complete Flow', () => {
 
-        // CustomerPage.closeModal()
+        // Home Page - Search Customer and click on Per Weight Order
         HomePage.searchCustomer(customer.regularCustomer)
         CustomerLandingPageAssertion.verifyCustomerDetailsLabel()
         CustomerLandingPage.clickPerWeightOrder()
 
         // On selecting weights
         GarmentSelectionPageAssertion.verifyPage()
-        GarmentSelectionPage.addGarmentWeightAndQuantity()
+        GarmentSelectionPage.addGarmentWeight(value.inputGarmentWeight)
+        GarmentSelectionPage.addGarmentQuantity(value.inputGarmentQuantity)
         GarmentSelectionPage.addItem()
 
         // On booking Screen

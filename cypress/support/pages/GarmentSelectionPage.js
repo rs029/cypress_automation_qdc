@@ -1,26 +1,30 @@
 import BasePage from "./BasePage"
 import GarmentSelectorPageLocator from "../locators/GarmentSelectorPageLocator"
 
+
 class GarmentSelectionPage extends BasePage {
     selectRandomGarment() {
         cy.clickRandom(GarmentSelectorPageLocator.garment)
     }
 
-    addGarmentWeightAndQuantity() {
+    addGarmentWeight(weight) {
         this.type(
             GarmentSelectorPageLocator.weightInput,
-            '1'
-        )
-        this.type(
-            GarmentSelectorPageLocator.quantityInput,
-            '1'
+            weight
         )
     }
 
-    setRate() {
+    addGarmentQuantity(quantity) {
+        this.type(
+            GarmentSelectorPageLocator.quantityInput,
+            quantity
+        )
+    }
+
+    setRate(rate) {
         this.type(
             GarmentSelectorPageLocator.rateInput,
-            '100'
+            rate
         )
     }
 

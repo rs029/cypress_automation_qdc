@@ -1,17 +1,23 @@
-class SelectMenu {
-    selectOption(selector, optionText, subMenu) {
-        cy.get(selector).should('contain', optionText).click()
-        cy.contains(subMenu).click()
-    }
+import MenuLocator from "../locators/MenuLocator"
 
+class MenuPage {
     dropdownMenu(optionText, subMenu) {
-        cy.contains('a.dropdown-toggle', optionText)
+        cy.contains(MenuLocator.menuDropdown, optionText)
             .click()
             .parent()
             .find('a')
             .contains(subMenu)
             .should('be.visible')
             .click()
+    }
+
+    clickMenuIcon() {
+        this.clickAfterVisible(MenuLocator.sidebarMenuIcon)
+    }
+
+    selectOption(selector, optionText, subMenu) {
+        cy.get(selector).should('contain', optionText).click()
+        cy.contains(subMenu).click()
     }
 
     processMap = {
@@ -72,4 +78,4 @@ class SelectMenu {
     }
 }
 
-export default new SelectMenu()
+export default new MenuPage()

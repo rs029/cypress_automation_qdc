@@ -1,10 +1,15 @@
-import CustomerPage from "../page_object/CustomerPage"
-import LoginPage from "../page_object/loginPage"
-import GarmentSelectionPage from "../page_object/GarmentSelectionPage"
+import LoginPage from "../../support/pages/LoginPage"
+import HomePage from "../../support/pages/HomePage"
+import CustomerLandingPage from "../../support/pages/CustomerLandingPage"
+import GarmentSelectionPage from "../../support/pages/GarmentSelectionPage"
 import BookingPage from "../page_object/BookingPage"
 import CommonSelector from "../page_object/CommonSelector"
 import CustomerAdvance from "../page_object/CustomerAdvance"
-const userData = require('../fixtures/userData.json')
+
+import CustomerLandingPageAssertion from "../../support/assertions/CustomerLandingPageAssertion"
+import GarmentSelectionPageAssertion from "../../support/assertions/GarmentSelectionPageAssertion"
+
+import userData from "../../fixtures/userData.json"
 
 describe('Advance Scenarios', () => {
     beforeEach(() => {
@@ -18,29 +23,22 @@ describe('Advance Scenarios', () => {
         )
     })
 
-    it('Amount Paid > Order Amount', () => {
+    it.only('Amount Paid > Order Amount', () => {
 
-        // CustomerPage.closeModal()
-        CustomerPage.searchCustomer('Automation Testing')
-        CustomerPage.verifyCustomerDetails()
-        CustomerPage.clickPerPieceOrder()
+        // Home Page - Search Customer and click on Per Piece Order
+        HomePage.searchCustomer(customer.regularCustomer)
+        CustomerLandingPageAssertion.verifyCustomerDetailsLabel()
+        CustomerLandingPage.clickPerPieceOrder()
 
         // On Garment Selection Screen
-        GarmentSelectionPage.verifyPage()
+        GarmentSelectionPageAssertion.verifyPage()
         GarmentSelectionPage.selectRandomGarment()
-        GarmentSelectionPage.setRate('100')
+        GarmentSelectionPage.setRate()
         GarmentSelectionPage.addItem()
         GarmentSelectionPage.closePage()
 
         // On booking Screen
-        BookingPage.uncheckReceiptTagIfChecked()
-        cy.get('#chkPrintReceipt').parent().invoke('prop','tagName')
-        BookingPage.uncheckPrintTagIfChecked()
-        BookingPage.setRate('500')
-        BookingPage.createOrder()
-        BookingPage.saveAsBalance()
-        BookingPage.verifyBookingSlip()
-        cy.getBookingNumber()
+        BookingPage.createBookingPerPieceOrderAdvance()
 
 
         // Navigate to Customer Advance & search customer
@@ -71,7 +69,7 @@ describe('Advance Scenarios', () => {
 
         // On booking Screen
         BookingPage.uncheckReceiptTagIfChecked()
-        cy.get('#chkPrintReceipt').parent().invoke('prop','tagName')
+        cy.get('#chkPrintReceipt').parent().invoke('prop', 'tagName')
         BookingPage.uncheckPrintTagIfChecked()
         BookingPage.createOrder()
         BookingPage.verifyBookingSlip()
